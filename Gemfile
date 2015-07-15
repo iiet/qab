@@ -49,6 +49,8 @@ group :development, :test do
   gem 'pry'
   gem 'awesome_print'
   gem 'meta_request'
-
+  gem 'pry-byebug'
+  gem 'pry-rescue'
+  gem 'pry-stack_explorer'
 end
 
