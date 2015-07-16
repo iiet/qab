@@ -4,7 +4,7 @@ class QuestionSet
   field :options, type: Hash
 
   belongs_to :subject
-  has_and_belongs_to_many :questions
+  has_and_belongs_to_many :questions, autosave: true
 
   def self.from_string(data)
     qs = QuestionSet.new
