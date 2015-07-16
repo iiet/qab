@@ -1,0 +1,8 @@
+<% @question_set.questions.each do |q| %>
+<%= q.question %>
+<% q.answers.each do |a| %>
+<%= a.correct ? '>>>' : '' %><%= a.letter %>) <%= a.answer %>
+<% end %>
+
+
+<% end %>
