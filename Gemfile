@@ -22,6 +22,9 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem "mongoid", "~> 4.0.0"
+gem 'bootstrap-sass', '~> 3.3.5'
+gem 'simple_form'
+gem 'haml-rails'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -42,5 +45,12 @@ group :development, :test do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'pry-rails'
+  gem 'better_errors'
+  gem 'pry'
+  gem 'awesome_print'
+  gem 'meta_request'
+  gem 'pry-byebug'
+  gem 'pry-rescue'
+  gem 'pry-stack_explorer'
 end
 

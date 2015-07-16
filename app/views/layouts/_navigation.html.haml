@@ -1,0 +1,18 @@
+%nav.navbar.navbar-default.navbar-fixed-top
+  .container
+    .navbar-header
+      %a.navbar-brand{href: root_path}
+        %span{class: "glyphicon glyphicon-question-sign", 'aria-hidden' => "true"}
+      %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      = link_to 'QAB'.upcase, root_path, class: 'navbar-brand'
+    .collapse.navbar-collapse
+      %ul.nav.navbar-nav
+        = render 'layouts/navigation_links'
+
+      %ul.nav.navbar-nav.navbar-right
+        %li
+          = #link_to "Logout", destroy_user_session_path, method: :delete
