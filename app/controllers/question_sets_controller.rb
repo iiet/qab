@@ -13,8 +13,13 @@ class QuestionSetsController < ApplicationController
   end
 
   def export
+    @options = @question_set.merged_options.
+      merge('urls' => Hash[@question_set.questions.map {|q| [q.number, question_url(q)]}])
     respond_to do |format|
-      format.plain { render :export }
+      format.plain {
+        headers['Content-Disposition'] = "attachment; filename=#{@question_set.name}.txt"
+        render :export
+      }
     end
   end
 
