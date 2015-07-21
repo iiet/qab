@@ -1,5 +1,8 @@
 class Question
   include Mongoid::Document
+  include Mongoid::History::Trackable
+  include Mongoid::Userstamp
+
   field :question, type: String
   field :number, type: String
   field :explanation, type: String
@@ -9,24 +12,7 @@ class Question
   embeds_many :answers
   embeds_many :comments
 
-  before_save do
-    self.changelog << { updated_at: Time.now, changes: diff } unless new_record?
-  end
-
-  def diff
-    diff = {}
-    diff.merge!(self: changes) unless changes.empty?
-
-    answers_changes = Hash[answers.map do |a|
-      !a.changes.empty? ? [a.id.to_s, a.changes] : nil
-    end.compact]
-    diff.merge!(answers: answers_changes) unless answers_changes.empty?
-
-    comments_changes = Hash[comments.map do |a|
-      !a.changes.empty? ? [a.id.to_s, a.changes] : nil
-    end.compact]
-    diff.merge!(comments: comments_changes) unless comments_changes.empty?
-
-    diff
-  end
+  track_history   :on => [:question, :number, :explanation],
+                  :version_field => :version,
+                  :track_update   =>  true
 end

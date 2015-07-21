@@ -25,6 +25,8 @@ gem "mongoid", "~> 4.0.0"
 gem 'bootstrap-sass', '~> 3.3.5'
 gem 'simple_form'
 gem 'haml-rails'
+gem 'mongoid-history'
+gem 'mongoid_userstamp'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -53,4 +55,3 @@ group :development, :test do
   gem 'pry-rescue'
   gem 'pry-stack_explorer'
 end
-
