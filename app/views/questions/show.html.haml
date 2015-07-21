@@ -6,10 +6,18 @@
 #epiceditor
   %textarea#my_text_area
     = @question.question
-%h3 Markdown version (problem with ^^)
-= @markdown.render(@question.question).html_safe
+%h3 Markdown version
+= render_markdown @question.question
 %h3 No markdown version:
 = @question.question
+
+%h3 Answers
+%ul
+  - @question.answers.each do |a|
+    %li= render_markdown a.answer
+
+%h3 Explanation
+= render_markdown @question.explanation
 
 
 = link_to 'Edit', edit_question_path(@question)
