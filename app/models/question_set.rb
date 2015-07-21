@@ -6,6 +6,8 @@ class QuestionSet
   belongs_to :subject
   has_and_belongs_to_many :questions
 
+  validates_presence_of :name, :subject
+
   def self.from_string(data)
     qs = QuestionSet.new
     converted_data = ::QuestionsImporter.new.from_string(data)

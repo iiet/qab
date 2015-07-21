@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @subject.name
+%p
+  %b Study semester:
+  = @subject.study_semester
+
+= link_to 'Edit', edit_subject_path(@subject)
+\|
+= link_to 'Back', subjects_path
