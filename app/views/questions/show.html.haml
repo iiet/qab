@@ -1,5 +1,16 @@
 %p#notice= notice
 
+%br/
+%br/
+
+#epiceditor
+  %textarea#my_text_area
+    = @question.question
+%h3 Markdown version (problem with ^^)
+= @markdown.render(@question.question).html_safe
+%h3 No markdown version:
+= @question.question
+
 
 = link_to 'Edit', edit_question_path(@question)
 \|

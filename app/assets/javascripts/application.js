@@ -14,4 +14,11 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap-sprockets
+//= require epiceditor
 //= require_tree .
+var ready = function()
+{
+  var editor = new EpicEditor().load();
+};
+$(document).ready(ready);
+$(document).on('page:load', ready);
