@@ -76,7 +76,7 @@ development:
 
     # Raise an error when performing a #find and the document is not found.
     # (default: true)
-    # raise_not_found_error: true
+    raise_not_found_error: false
 
     # Raise an error when defining a scope with the same name as an
     # existing method. (default: false)
@@ -88,6 +88,8 @@ development:
     # Ensure all times are UTC in the app side. (default: false)
     # use_utc: false
 test:
+  options:
+    raise_not_found_error: false
   sessions:
     default:
       database: qab_test
@@ -99,3 +101,16 @@ test:
         # low amounts for fast failures.
         max_retries: 1
         retry_interval: 0
+
+production:
+  sessions:
+    default:
+      uri: <%= ENV['MONGO_URI'] %>
+      options:
+        read: primary
+        # In the test environment we lower the retries and retry interval to
+        # low amounts for fast failures.
+        max_retries: 1
+        retry_interval: 0
+  options:
+    raise_not_found_error: false
