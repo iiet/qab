@@ -26,6 +26,9 @@ gem 'bootstrap-sass', '~> 3.3.5'
 gem 'bootstrap-generators', '~> 3.3.4'
 gem 'simple_form'
 gem 'haml-rails'
+gem 'devise'
+gem 'omniauth-oauth2'
+gem 'rails_admin'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -54,4 +57,3 @@ group :development, :test do
   gem 'pry-rescue'
   gem 'pry-stack_explorer'
 end
-

@@ -1,0 +1,11 @@
+<% @question_set.questions.each do |q| %>
+[#<%= q.number %>] <%= q.question %>
+<% q.answers.each do |a| %>
+<%= a.correct ? '>>>' : '' %><%= a.letter %>) <%= a.answer %>
+<% end %>
+
+
+<% end %>
+<% unless @options.empty? %>
+<options> <%= JSON.pretty_generate(@options) %>
+<% end %>
