@@ -1,23 +1,5 @@
-%h1 Listing subjects
-
-%table
-  %thead
-    %tr
-      %th Name
-      %th Study semester
-      %th
-      %th
-      %th
-
-  %tbody
-    - @subjects.each do |subject|
-      %tr
-        %td= subject.name
-        %td= subject.study_semester
-        %td= link_to 'Show', subject
-        %td= link_to 'Edit', edit_subject_path(subject)
-        %td= link_to 'Destroy', subject, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Subject', new_subject_path
+%h1 Subjects
+- @subjects.zip(tile_colors).each do |subject,color|
+  .col-sm-4.col-md-2
+    = link_to "<h2>#{subject.name}</h2>".html_safe, subject, class: "thumbnail tile tile-medium tile-#{color}"
+      

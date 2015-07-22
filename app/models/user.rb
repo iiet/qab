@@ -18,6 +18,7 @@ class User
   field :username, type: String
   field :first_name, type: String
   field :last_name, type: String
+  field :start_year, type: Integer # TODO retrieve this from API
   field :accounts_api_id, type: String
 
   field :admin, type: Mongoid::Boolean, default: false
@@ -39,6 +40,10 @@ class User
 
   def full_name
     "#{first_name} #{last_name} (#{username})"
+  end
+
+  def current_semester
+    (Time.now.year-start_year) * 2 + (Time.now.month >= 10 ? 1 : 0)
   end
 
 end
