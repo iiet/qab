@@ -1,12 +1,12 @@
-%p#notice= notice
-
-%p
-  %b Name:
+%h1
   = @subject.name
-%p
-  %b Study semester:
-  = @subject.study_semester
-
-= link_to 'Edit', edit_subject_path(@subject)
-\|
-= link_to 'Back', subjects_path
+  %small
+    = @subject.study_semester.ordinalize
+    semester
+- @subject.question_sets.each do |qs|
+  .col-sm-4.col-md-2
+    %a{:href => question_set_path(qs), :class => "thumbnail tile tile-medium tile-#{question_set_color(qs)}"}
+      %h2.tile-content
+        = qs.name
+        %br/
+        (#{qs.cached_questions_count})

@@ -1,5 +1,5 @@
-%h1 Subjects
-- @subjects.zip(tile_colors).each do |subject,color|
+- @subjects.each do |subject|
   .col-sm-4.col-md-2
-    = link_to "<h2>#{subject.name}</h2>".html_safe, subject, class: "thumbnail tile tile-medium tile-#{color}"
-      
+    %a{:href => subject_path(subject), :class => "thumbnail tile tile-medium tile-#{subject_color(subject)}"}
+      %h2.tile-content= subject.name
+      .tile-content{:style => 'bottom:0px;right:0px'}= subject.study_semester
