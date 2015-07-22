@@ -22,8 +22,6 @@ class User
 
   field :admin, type: Mongoid::Boolean, default: false
 
-  has_many :comments
-
   def self.find_for_accounts_api(data)
     @user = User.find_by(accounts_api_id: data['uid'])
     unless @user

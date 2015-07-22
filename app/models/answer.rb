@@ -5,4 +5,8 @@ class Answer
   field :letter, type: String
 
   embedded_in :question
+
+  def name # for rails admin
+    "#{letter}) #{answer.first(20)}"
+  end
 end

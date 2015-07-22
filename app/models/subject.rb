@@ -6,4 +6,5 @@ class Subject
   has_many :question_sets, dependent: :restrict
 
   validates_presence_of :name, :study_semester
+  validates_numericality_of :study_semester, only_integer: true, greater_than: 0
 end
