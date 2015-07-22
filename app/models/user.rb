@@ -20,6 +20,8 @@ class User
   field :last_name, type: String
   field :accounts_api_id, type: String
 
+  field :admin, type: Mongoid::Boolean, default: false
+
   has_many :comments
 
   def self.find_for_accounts_api(data)
