@@ -12,15 +12,26 @@ class Question
   embeds_many :answers
   embeds_many :comments
 
-  accepts_nested_attributes_for :answers
-  accepts_nested_attributes_for :comments
+  accepts_nested_attributes_for :answers, reject_if: :all_blank#, allow_destroy: true
+  accepts_nested_attributes_for :comments, reject_if: :all_blank#, allow_destroy: true
 
   track_history   :on => [:question, :number, :explanation],
                   :version_field => :version,
                   :track_update   =>  true
 
+  validates_presence_of :question, :number
+  validates :number, length: { in: 1..4 }
+
   def name # for rails admin
     question.first(40)
+  end
+
+  before_save do |q|
+    answers.each do |a|
+      if a.changed?
+        a.save
+      end
+    end
   end
   
 end
