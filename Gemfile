@@ -27,6 +27,8 @@ gem 'simple_form'
 gem 'haml-rails'
 gem 'mongoid-history'
 gem 'mongoid_userstamp'
+gem 'devise'
+gem 'omniauth-oauth2'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
