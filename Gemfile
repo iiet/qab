@@ -25,6 +25,8 @@ gem "mongoid", "~> 4.0.0"
 gem 'bootstrap-sass', '~> 3.3.5'
 gem 'simple_form'
 gem 'haml-rails'
+gem 'mongoid-history'
+gem 'mongoid_userstamp'
 gem 'devise'
 gem 'omniauth-oauth2'
 gem 'rails_admin'
