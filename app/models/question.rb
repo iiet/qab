@@ -26,13 +26,4 @@ class Question
   def name # for rails admin
     question.first(40)
   end
-
-  before_save do |q|
-    answers.each do |a|
-      if a.changed?
-        a.save
-      end
-    end
-  end
-  
 end
