@@ -1,5 +1,6 @@
+require 'zlib'
 module SubjectsHelper
   def subject_color(subject)
-    tile_colors[subject.name.hash % tile_colors.count]
+    tile_colors[Zlib::crc32(subject.name) % tile_colors.count]
   end
 end

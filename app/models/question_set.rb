@@ -2,9 +2,8 @@ class QuestionSet
   include Mongoid::Document
   field :name, type: String
   field :options, type: Hash, default: {}
-  field :questions_count, type: Integer, default: 0
 
-  belongs_to :subject, counter_cache: true
+  belongs_to :subject
 
   has_and_belongs_to_many :questions, autosave: true
 
@@ -31,7 +30,9 @@ class QuestionSet
     qs
   end
 
-  before_save do
-    subject.reset_counters(:question_sets)
+  rails_admin do
+    edit do
+      exclude_fields :id
+    end
   end
 end

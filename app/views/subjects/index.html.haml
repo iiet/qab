@@ -3,4 +3,4 @@
     %a{:href => subject_path(subject), :class => "thumbnail tile tile-medium tile-#{subject_color(subject)}"}
       %h2.tile-content
         = subject.name
-        (#{subject.question_sets_count})
+        (#{subject.question_sets.count})

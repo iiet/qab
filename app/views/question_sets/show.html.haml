@@ -1,6 +1,20 @@
-%p#notice= notice
-
-
-= link_to 'Edit', edit_question_set_path(@question_set)
-\|
-= link_to 'Back', question_sets_path
+%h1
+  = @question_set.subject.name
+  \::
+  = @question_set.name
+  %small
+    Questions count:
+    = @question_set.questions.count
+  .pull-right
+    = link_to 'Back to subject', subject_path(@question_set.subject), class: 'btn btn-default'
+- if @question_set.questions.present?
+  - @question_set.questions.each_slice(@question_set.questions.count/3) do |slice|
+    .col-sm-6.col-md-4
+      .list_group
+        - slice.each do |q|
+          %a.list-group-item{href: question_path(q)}
+            %h4.list-group-item-heading
+              Pytanie
+              = q.number
+            .list-group-text
+              = q.question
