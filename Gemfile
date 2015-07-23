@@ -31,6 +31,7 @@ gem 'mongoid_userstamp'
 gem 'devise'
 gem 'omniauth-oauth2'
 gem 'rails_admin'
+gem 'rails_12factor'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
