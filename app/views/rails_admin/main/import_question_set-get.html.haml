@@ -1,0 +1,4 @@
+= simple_form_for :question_import, url: import_question_set_path do |f|
+  = f.input :question_set, collection: QuestionSet.all, label_method: :full_name
+  = f.input :file, as: :file
+  = f.submit value: 'Import!'

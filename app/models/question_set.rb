@@ -17,13 +17,24 @@ class QuestionSet
     options.merge('explanations' => explanations_by_number).select {|_,v| v.present?}
   end
 
-  def self.from_string(data)
-    qs = QuestionSet.new
-    converted_data = ::QuestionsImporter.new.from_string(data)
+  def modify_from_importer_data(converted_data)
     converted_data[:questions].each do |q|
-      qs.questions << Question.new(q)
+      self.questions << Question.new(q)
     end
-    qs.options = converted_data[:options]
+    self.options = converted_data[:options]
+  end
+
+  def self.from_importer_data(converted_data)
+    qs = QuestionSet.new
+    qs.modify_from_importer_data(converted_data)
     qs
+  end
+
+  def self.from_string(data)
+    from_importer_data(::QuestionsImporter.new.from_string(data))
+  end
+
+  def full_name
+    "#{subject.name}/#{name}"
   end
 end
