@@ -74,6 +74,6 @@ class QuestionsController < ApplicationController
     end
 
     def set_question_set
-      @question_set = QuestionSet.find(params[:id])
+      @question_set = QuestionSet.find(params[:question_set_id])
     end
 end
