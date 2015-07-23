@@ -1,5 +1,6 @@
 - @subjects.each do |subject|
   .col-sm-4.col-md-2
     %a{:href => subject_path(subject), :class => "thumbnail tile tile-medium tile-#{subject_color(subject)}"}
-      %h2.tile-content= subject.name
-      .tile-content{:style => 'bottom:0px;right:0px'}= subject.study_semester
+      %h2.tile-content
+        = subject.name
+        (#{subject.question_sets_count})

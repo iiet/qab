@@ -2,6 +2,7 @@ class Subject
   include Mongoid::Document
   field :name, type: String
   field :study_semester, type: Integer
+  field :question_sets_count, type: Integer, default: 0
 
   has_many :question_sets, dependent: :restrict
 

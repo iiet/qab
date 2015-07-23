@@ -8,7 +8,8 @@ class Question
   field :explanation, type: String
   field :original_source, type: String
 
-  has_and_belongs_to_many :question_sets
+  has_and_belongs_to_many :question_sets, counter_cache: true
+
   embeds_many :answers
   embeds_many :comments
 
@@ -27,6 +28,9 @@ class Question
   end
 
   before_save do |q|
+    question_sets.each do |qs|
+      qs.reset_counters(:questions)
+    end
     answers.each do |a|
       if a.changed?
         a.save

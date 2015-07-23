@@ -2,14 +2,11 @@ class QuestionSet
   include Mongoid::Document
   field :name, type: String
   field :options, type: Hash, default: {}
-  field :cached_questions_count, type: Integer
+  field :questions_count, type: Integer, default: 0
 
-  belongs_to :subject
+  belongs_to :subject, counter_cache: true
+
   has_and_belongs_to_many :questions, autosave: true
-
-  before_save do
-    self.cached_questions_count = questions.count
-  end
 
   def explanations_by_number
     Hash[
@@ -32,5 +29,9 @@ class QuestionSet
     end
     qs.options = converted_data[:options]
     qs
+  end
+
+  before_save do
+    subject.reset_counters(:question_sets)
   end
 end
