@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :subjects, only: [:show, :index]
   resources :questions
   resources :question_sets do
+    resources :questions
     member do
       get 'export'
     end

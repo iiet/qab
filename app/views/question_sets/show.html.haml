@@ -12,7 +12,7 @@
     .col-sm-6.col-md-4
       .list_group
         - slice.each do |q|
-          %a.list-group-item{href: question_path(q)}
+          %a.list-group-item{href: question_set_question_path(@question_set, q)}
             %h4.list-group-item-heading
               Pytanie
               = q.number
