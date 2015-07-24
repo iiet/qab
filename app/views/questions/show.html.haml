@@ -1,6 +1,14 @@
-%p#notice= notice
+%nav
+  %ul.pager
+    - if @question_set && @question_set.previous_question(@question)
+      %li.previous
+        %a{href: question_set_question_path(@question_set,  @question_set.previous_question(@question))}
+          %span.aria-hidden &larr;
+          Previous
+    - if @question_set && @question_set.next_question(@question)
+      %li.next
+        %a{href: question_set_question_path(@question_set,  @question_set.next_question(@question))}
+          %span.aria-hidden &rarr;
+          Next
 
-
-= link_to 'Edit', edit_question_path(@question)
-\|
-= link_to 'Back', questions_path
+= @question.question

@@ -4,6 +4,7 @@ class QuestionSet
   field :options, type: Hash, default: {}
 
   belongs_to :subject
+
   has_and_belongs_to_many :questions, autosave: true
 
   def explanations_by_number
@@ -17,6 +18,8 @@ class QuestionSet
     options.merge('explanations' => explanations_by_number).select {|_,v| v.present?}
   end
 
+  validates_presence_of :name, :subject
+
   def self.from_string(data)
     qs = QuestionSet.new
     converted_data = ::QuestionsImporter.new.from_string(data)
@@ -25,5 +28,21 @@ class QuestionSet
     end
     qs.options = converted_data[:options]
     qs
+  end
+
+  def next_question(question)
+    index = questions.index(question) + 1
+    questions[index] if index < questions.size
+  end
+
+  def previous_question(question)
+    index = questions.index(question) - 1
+    questions[index] if index >= 0
+  end
+
+  rails_admin do
+    edit do
+      exclude_fields :id
+    end
   end
 end
