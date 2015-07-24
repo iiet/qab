@@ -23,6 +23,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem "mongoid", "~> 4.0.0"
 gem 'bootstrap-sass', '~> 3.3.5'
+gem 'bootstrap-generators', '~> 3.3.4'
 gem 'simple_form'
 gem 'haml-rails'
 gem 'mongoid-history'

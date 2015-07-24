@@ -7,6 +7,8 @@ class QuestionSet
   belongs_to :subject
   has_and_belongs_to_many :questions, autosave: true
 
+  validates_presence_of :name, :subject
+
   def explanations_by_number
     Hash[
       questions.map {|q| q.explanation.present? ? [q.number, q.explanation] : nil }.compact
@@ -38,5 +40,11 @@ class QuestionSet
 
   def full_name
     "#{subject.name}/#{name}"
+  end
+
+  rails_admin do
+    edit do
+      exclude_fields :id
+    end
   end
 end
