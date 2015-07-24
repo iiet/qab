@@ -2,6 +2,7 @@ class QuestionSet
   include Mongoid::Document
   field :name, type: String
   field :options, type: Hash, default: {}
+  field :import_errors, type: Array, default: []
 
   belongs_to :subject
   has_and_belongs_to_many :questions, autosave: true
@@ -21,6 +22,7 @@ class QuestionSet
     converted_data[:questions].each do |q|
       self.questions << Question.new(q)
     end
+    self.import_errors += converted_data[:errors]
     self.options = converted_data[:options]
   end
 
