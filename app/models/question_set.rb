@@ -42,6 +42,16 @@ class QuestionSet
     "#{subject.name}/#{name}"
   end
 
+  def next_question(question)
+    index = questions.index(question) + 1
+    questions[index] if index < questions.size
+  end
+
+  def previous_question(question)
+    index = questions.index(question) - 1
+    questions[index] if index >= 0
+  end
+
   rails_admin do
     edit do
       exclude_fields :id
