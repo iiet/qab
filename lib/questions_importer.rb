@@ -3,6 +3,7 @@ class QuestionsImporter
   def from_string(data)
     matched_questions = data.split /(?:\r?\n){2,}/
     @errors = []
+    @last_number = 0
     options = nil
 
     if matched_options = matched_questions.last.match(/<options>\s*(\{(?:.|\n|\r)*})\s*/)
@@ -73,10 +74,13 @@ class QuestionsImporter
         }
       end
     end
-    if question[:answers].count >= 2 and question[:answers].select{|a| a[:correct]}.count >= 1
+    unless question[:number].present?
+      question[:number] = (@last_number += 1)
+    end
+    if question[:answers].count >= 2 && question[:answers].select{|a| a[:correct]}.count >= 1 && !question[:question].empty?
       question
     else 
-      @errors << "Question #{data} didn't meet the requirements" unless data.include? '<options>'
+      @errors << { data: data, explanation: "Question didn't meet the requirements" } unless data.include? '<options>'
       nil
     end
   end

@@ -18,7 +18,7 @@ class User
   field :username, type: String
   field :first_name, type: String
   field :last_name, type: String
-  field :start_year, type: Integer # TODO retrieve this from API
+  field :start_year, type: Integer, default: 2013 # TODO retrieve this from API
   field :accounts_api_id, type: String
 
   field :admin, type: Mongoid::Boolean, default: false
