@@ -4,7 +4,7 @@ class QuestionsImporter
     matched_questions = data.split /(?:\r?\n){2,}/
     @errors = []
     @last_number = 0
-    options = nil
+    options = {}
 
     if matched_options = matched_questions.last.match(/<options>\s*(\{(?:.|\n|\r)*})\s*/)
       begin
