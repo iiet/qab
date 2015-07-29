@@ -20,4 +20,12 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  admin:
+    actions:
+      import_question_set:
+        menu:
+          Import from Drill file
+        breadcrumb:
+          Importing from Drill file
+        title:
+          Importing from Drill file
